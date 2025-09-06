@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Удалить пациента</title>
+  </head>
+  <body>
+    <h2>Удалить пациента</h2>
+    <p>
+      Вы уверены, что хотите удалить пациента:
+      <strong>{{ patient.last_name }} {{ patient.first_name }}</strong>?
+    </p>
+
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit">Да, удалить</button>
+      <a href="{% url 'patients:patient_list' %}">Отмена</a>
+    </form>
+  </body>
+</html>

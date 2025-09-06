@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Редактировать пациента</title>
+  </head>
+  <body>
+    <h1>
+      Редактировать пациента: {{ patient.last_name }} {{ patient.first_name }}
+    </h1>
+    <form method="post">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Сохранить изменения</button>
+    </form>
+    <p>
+      <a href="{% url 'patients:patient_list' %}"
+        >Вернуться к списку пациентов</a
+      >
+    </p>
+  </body>
+</html>

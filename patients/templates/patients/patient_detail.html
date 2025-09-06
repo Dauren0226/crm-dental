@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Карточка пациента</title>
+  </head>
+  <body>
+    <h1>{{ patient.last_name }} {{ patient.first_name }}</h1>
+    <p>Дата рождения: {{ patient.birth_date }}</p>
+    <p>ИИН: {{ patient.iin }}</p>
+    <p>Телефон: {{ patient.phone }}</p>
+    <p>Email: {{ patient.email }}</p>
+
+    <a href="{% url 'patients:add_visit' patient.pk %}">Создать посещение</a>
+
+    <h2>История посещений:</h2>
+    <ul>
+      {% for visit in patient.visits.all %}
+      <li>
+        {{ visit.date }} — {{ visit.doctor }} — {{ visit.cost }}₸ — {{
+        visit.payment_status }}
+      </li>
+      {% empty %}
+      <li>Посещений пока нет</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
